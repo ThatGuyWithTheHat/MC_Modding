@@ -1,10 +1,12 @@
 package net.mattemactics.testmod;
 
-import net.mattemactics.testmod.setup.Registration;
+
+import net.mattemactics.testmod.core.init.ItemInit;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.common.Mod;
@@ -28,9 +30,12 @@ public class TestMod
     private static final Logger LOGGER = LogManager.getLogger();
 
     public TestMod() {
-        Registration.register();
+        //Registration.register();
         // Register the setup method for modloading
+        IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+
+        ItemInit.ITEMS.register(bus);
 
 
         // Register ourselves for server and other game events we are interested in
