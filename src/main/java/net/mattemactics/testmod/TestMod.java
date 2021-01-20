@@ -1,6 +1,7 @@
 package net.mattemactics.testmod;
 
 
+import net.mattemactics.testmod.core.init.BlockInit;
 import net.mattemactics.testmod.core.init.ItemInit;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -36,6 +37,7 @@ public class TestMod
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
 
         ItemInit.ITEMS.register(bus);
+        BlockInit.BLOCKS.register(bus);
 
 
         // Register ourselves for server and other game events we are interested in

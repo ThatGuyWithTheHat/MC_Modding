@@ -1,3 +1,5 @@
 {
-  "item.testmod.item_name": "Test Item"
+  "item.testmod.item_name": "Test Item",
+  "block.testmod.block_name": "Test Block",
+  "tile.tutorial.block_name": "Test Block"
 }
