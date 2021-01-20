@@ -21,5 +21,6 @@ public class BlockInit {
             () -> new Block(AbstractBlock.Properties
                     .create(Material.IRON, MaterialColor.BLUE).hardnessAndResistance(15,30)
                     .harvestTool(ToolType.PICKAXE)
-                    .harvestLevel(-1).sound(SoundType.CLOTH)));
+                    .harvestLevel(-1).sound(SoundType.CLOTH)
+                    .setRequiresTool()));
 }
