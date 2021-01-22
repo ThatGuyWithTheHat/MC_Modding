@@ -1,6 +1,7 @@
 package net.mattemactics.testmod.core.init;
 
 import net.mattemactics.testmod.TestMod;
+import net.mattemactics.testmod.common.items.SpecailItem;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -17,4 +18,7 @@ public class ItemInit {
 
     public static final RegistryObject<BlockItem> EXAMPLE_BLOCK = ITEMS.register("block_name",
             () -> new BlockItem(BlockInit.EXAMPLE_BLOCK.get(), new Item.Properties().group(ItemGroup.BUILDING_BLOCKS)));
+
+    public static final RegistryObject<SpecailItem> SPECAIL_ITEM = ITEMS.register("specail_item",
+            () -> new SpecailItem(new Item.Properties().group(ItemGroup.MISC)));
 }

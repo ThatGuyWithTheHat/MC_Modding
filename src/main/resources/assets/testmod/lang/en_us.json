@@ -1,5 +1,6 @@
 {
   "item.testmod.item_name": "Test Item",
   "block.testmod.block_name": "Test Block",
-  "tile.tutorial.block_name": "Test Block"
+  "tile.tutorial.block_name": "Test Block",
+  "tooltip.specail_item.hold_shift": "hold shift for advanced tool tip"
 }
