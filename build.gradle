@@ -6,14 +6,16 @@ buildscript {
     }
     dependencies {
         classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '3.+', changing: true
+        classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.2'
     }
 }
 apply plugin: 'net.minecraftforge.gradle'
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
+apply plugin: 'com.github.johnrengelman.shadow'
 
-version = '1.0'
+version = '0.1'
 group = 'net.mattemactics.testmod' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'testmod'
 
@@ -140,6 +142,22 @@ jar {
             "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
+}
+
+shadowJar {
+    // Only shadow fluent-hc
+    dependencies {
+        include(dependency('com.cavariux:twitch:*.'))
+    }
+
+    // Relocate fluent-hc to prevent conflicts with other mods that include it
+    relocate 'org.apache.http.client.fluent', 'choonster.testmod3.repack.org.apache.http.client.fluent'
+
+    classifier '' // Replace the default JAR
+}
+
+reobf {
+    shadowJar {} // Reobfuscate the shadowed JAR
 }
 
 // Example configuration to allow publishing using the maven-publish task
