@@ -18,18 +18,31 @@ public class TwitchViewer {
             commandCost.put("!creeper", 0);
             commandCost.put("!zombie", 0);
             commandCost.put("!skelly", 0);
-            commandCost.put("!tnt", 0);
+            //commandCost.put("!tnt", 0);
             commandCost.put("!anvil", 0);
             commandCost.put("!ghast", 0);
             commandCost.put("!fire", 0);
+            commandCost.put("!goodboy", 0);
+            commandCost.put("!dropit", 0);
+            commandCost.put("!boom", 0);
+            commandCost.put("!enderman", 0);
+            commandCost.put("!blaze", 0);
+            commandCost.put("!bees", 0);
         }else {
-            commandCost.put("!creeper", 50);
-            commandCost.put("!zombie", 15);
-            commandCost.put("!skelly", 40);
-            commandCost.put("!tnt", 50);
+            commandCost.put("!creeper", 300);
+            commandCost.put("!zombie", 50);
+            commandCost.put("!skelly", 65);
+            //commandCost.put("!tnt", 600);
             commandCost.put("!anvil", 15);
-            commandCost.put("!ghast", 150);
-            commandCost.put("!fire", 100);
+            commandCost.put("!ghast", 300);
+            commandCost.put("!fire", 200);
+            commandCost.put("!goodboy", 100);
+            commandCost.put("!dropitall", 1500);
+            commandCost.put("!dropit", 500);
+            commandCost.put("!boom", 500);
+            commandCost.put("!enderman", 300);
+            commandCost.put("!blaze", 300);
+            commandCost.put("!bees", 100);
         }
     }
 

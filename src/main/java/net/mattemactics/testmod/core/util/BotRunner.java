@@ -1,6 +1,7 @@
 package net.mattemactics.testmod.core.util;
 
 import com.cavariux.twitchirc.Chat.Channel;
+import net.mattemactics.testmod.TestMod;
 
 public class BotRunner extends Thread {
 
@@ -9,10 +10,12 @@ public class BotRunner extends Thread {
 
     public void run(){
         try{
+
             getBotGoing();
         }catch (Exception e)
         {
             // Throwing an exception
+            TestMod.LOGGER.error("UNABLE TO START");
             System.out.println ("Exception is caught");
         }
     }
