@@ -1,9 +1,9 @@
-package net.mattemactics.testmod;
+package net.mattemactics.twitchtroll;
 
 
-import net.mattemactics.testmod.config.Config;
-import net.mattemactics.testmod.core.init.BlockInit;
-import net.mattemactics.testmod.core.init.ItemInit;
+import net.mattemactics.twitchtroll.config.Config;
+import net.mattemactics.twitchtroll.core.init.BlockInit;
+import net.mattemactics.twitchtroll.core.init.ItemInit;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -17,16 +17,16 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod(TestMod.modId)
+@Mod(TwitchTroll.modId)
 @Mod.EventBusSubscriber(Dist.CLIENT)
-public class TestMod
+public class TwitchTroll
 {
 
-    public static final String modId = "testmod";
+    public static final String modId = "twitchtroll";
     // Directly reference a log4j logger.
     public static final Logger LOGGER = LogManager.getLogger();
 
-    public TestMod() {
+    public TwitchTroll() {
         //Registration.register();
         // Register the setup method for modloading
 

@@ -1,4 +1,4 @@
-package net.mattemactics.testmod.client.util;
+package net.mattemactics.twitchtroll.client.util;
 
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;

@@ -1,7 +1,7 @@
-package net.mattemactics.testmod.core.util;
+package net.mattemactics.twitchtroll.core.util;
 
 import com.cavariux.twitchirc.Chat.Channel;
-import net.mattemactics.testmod.TestMod;
+import net.mattemactics.twitchtroll.TwitchTroll;
 
 public class BotRunner extends Thread {
 
@@ -15,7 +15,7 @@ public class BotRunner extends Thread {
         }catch (Exception e)
         {
             // Throwing an exception
-            TestMod.LOGGER.error("UNABLE TO START");
+            TwitchTroll.LOGGER.error("UNABLE TO START");
             System.out.println ("Exception is caught");
         }
     }

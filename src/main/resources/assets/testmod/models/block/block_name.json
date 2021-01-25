@@ -1,6 +1,6 @@
 {
   "parent": "block/cube_all",
   "textures": {
-    "all": "testmod:blocks/block_name"
+    "all": "twitchtroll:blocks/block_name"
   }
 }

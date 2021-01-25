@@ -1,6 +1,6 @@
-package net.mattemactics.testmod.core.util;
+package net.mattemactics.twitchtroll.core.util;
 
-import net.mattemactics.testmod.TestMod;
+import net.mattemactics.twitchtroll.TwitchTroll;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -17,7 +17,7 @@ public class WorldLoadListener {
     {
         if(!on) {
             //Minecraft.getInstance().player.sendChatMessage("PLayer login");
-            TestMod.LOGGER.info("!!!!!!!!!!!!Player login!!!!!!!!!!!");
+            TwitchTroll.LOGGER.info("!!!!!!!!!!!!Player login!!!!!!!!!!!");
             bot.setDaemon(true);
             bot.start();
             on = true;

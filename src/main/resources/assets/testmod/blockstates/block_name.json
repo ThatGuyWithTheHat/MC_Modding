@@ -1,5 +1,5 @@
 {
   "variants": {
-    "": { "model": "testmod:block/block_name" }
+    "": { "model": "twitchtroll:block/block_name" }
   }
 }

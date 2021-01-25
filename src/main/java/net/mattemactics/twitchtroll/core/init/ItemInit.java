@@ -1,7 +1,7 @@
-package net.mattemactics.testmod.core.init;
+package net.mattemactics.twitchtroll.core.init;
 
-import net.mattemactics.testmod.TestMod;
-import net.mattemactics.testmod.common.items.SpecailItem;
+import net.mattemactics.twitchtroll.TwitchTroll;
+import net.mattemactics.twitchtroll.common.items.SpecailItem;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -11,7 +11,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class ItemInit {
 
-    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, TestMod.modId);
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, TwitchTroll.modId);
 
     public static final RegistryObject<Item> EXAMPLE_ITEM = ITEMS.register("item_name",
             () -> new Item(new Item.Properties().group(ItemGroup.MISC)));

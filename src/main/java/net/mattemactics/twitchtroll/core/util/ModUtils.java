@@ -1,4 +1,4 @@
-package net.mattemactics.testmod.core.util;
+package net.mattemactics.twitchtroll.core.util;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;

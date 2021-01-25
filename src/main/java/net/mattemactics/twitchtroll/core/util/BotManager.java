@@ -1,4 +1,4 @@
-package net.mattemactics.testmod.core.util;
+package net.mattemactics.twitchtroll.core.util;
 
 
 import com.cavariux.twitchirc.Chat.Channel;
@@ -15,7 +15,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 public class BotManager extends TwitchBot {
 
     ArrayList<String> commands = new ArrayList<String>();
-    Map<String,TwitchViewer> viewers = new HashMap<>();
+    public static Map<String,TwitchViewer> viewers = new HashMap<>();
     static Semaphore semaphore = new Semaphore(1);
 
 
@@ -41,6 +41,8 @@ public class BotManager extends TwitchBot {
         String userName = user.toString();
         String callMsg = userName + " has deployed ";
 
+        //if(user.isMod(channel)) sendMsg("you are a mod", channel);
+
         //this.sendMsg(message, channel);
         if (viewers.get(userName).costPoints(message.toLowerCase()) || user.isMod(channel)) {
 
@@ -51,7 +53,7 @@ public class BotManager extends TwitchBot {
             } else if (viewers.get(userName).onCommandList(message)) {
 
                 String spawnMsg = userName + message;
-                callMsg = callMsg + " has deployed ";
+                callMsg = callMsg;
                 callMsg = callMsg + message.replace("!", "");
                 this.sendMsg(callMsg, channel);
                 try {
@@ -62,10 +64,24 @@ public class BotManager extends TwitchBot {
 
                 }
 
+            } else if (message.contains("!give") && (user.isMod(channel) || userName.equalsIgnoreCase("mattemactics"))) {
+
+                try{
+                    String[] msg = message.split(" ");
+                    viewers.get(msg[1]).givePoints(Integer.parseInt(msg[2]));
+                } catch(Exception e){
+                    this.sendMsg("@" + userName + " the give command is !give <username> <points>", channel);
+
+                }
+
             }
 
 
-        }
+        } else this.sendMsg(userName + " you do not have enough coins", channel);
+    }
+
+    public static void refund(String userName, String command){
+        viewers.get(userName).refundPoints("!" + command);
     }
 
 
@@ -81,7 +97,7 @@ public class BotManager extends TwitchBot {
         if(!viewers.containsKey(user.toString())){
             viewers.put(user.toString(), new TwitchViewer(user.toString()));
         }
-        if(message.contains("!")) this.processCommand(user, channel, message);
+        if(message.startsWith("!")) this.processCommand(user, channel, message);
         viewers.get(user.toString()).pointsIncrease();
     }
 
@@ -92,16 +108,6 @@ public class BotManager extends TwitchBot {
     public BotManager() {
         this.setUsername("mattemactics");
         this.setOauth_Key(Secrets.AUTH);
-
-
-        commands.add("!creeper");
-        commands.add("!zombie");
-        commands.add("!skeleton");
-        commands.add("!tnt");
-        commands.add("!ghast");
-        commands.add("!anvil");
-        commands.add("!coin");
-
     }
 
 

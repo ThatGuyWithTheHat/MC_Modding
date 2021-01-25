@@ -15,9 +15,9 @@ apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 apply plugin: 'com.github.johnrengelman.shadow'
 
-version = '0.1'
-group = 'net.mattemactics.testmod' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = 'testmod'
+version = '0.5'
+group = 'net.mattemactics.twitchtroll' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = 'twitchtroll'
 
 sourceCompatibility = targetCompatibility = compileJava.sourceCompatibility = compileJava.targetCompatibility = '1.8' // Need this here so eclipse task generates correctly.
 
@@ -46,7 +46,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                testmod {
+                twitchtroll {
                     source sourceSets.main
                 }
             }
@@ -62,7 +62,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             mods {
-                testmod {
+                twitchtroll {
                     source sourceSets.main
                 }
             }
@@ -78,13 +78,13 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            args '--mod', 'testmod', '--all',
+            args '--mod', 'twitchtroll', '--all',
                     '--existing', file('src/main/resources').toString(),
                     '--existing', file('src/generated/resources').toString(),
                     '--output', file('src/generated/resources/')
 
             mods {
-                testmod {
+                twitchtroll {
                     source sourceSets.main
                 }
             }

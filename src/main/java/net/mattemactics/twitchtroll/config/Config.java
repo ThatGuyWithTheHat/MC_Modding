@@ -1,9 +1,9 @@
-package net.mattemactics.testmod.config;
+package net.mattemactics.twitchtroll.config;
 
 
 import com.electronwill.nightconfig.core.file.CommentedFileConfig;
 import com.electronwill.nightconfig.core.io.WritingMode;
-import net.mattemactics.testmod.TestMod;
+import net.mattemactics.twitchtroll.TwitchTroll;
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.fml.common.Mod;
 
@@ -19,11 +19,11 @@ public class Config {
     }
 
     public static void loadConfig(ForgeConfigSpec config, String path){
-        TestMod.LOGGER.info("loading config");
+        TwitchTroll.LOGGER.info("loading config");
         final CommentedFileConfig file = CommentedFileConfig.builder(new File(path)).sync().autosave().writingMode(WritingMode.REPLACE).build();
-        TestMod.LOGGER.info("built config " + path);
+        TwitchTroll.LOGGER.info("built config " + path);
         file.load();
-        TestMod.LOGGER.info("loaded config " + path);
+        TwitchTroll.LOGGER.info("loaded config " + path);
         config.setConfig(file);
     }
 }

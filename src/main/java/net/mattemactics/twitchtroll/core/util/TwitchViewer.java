@@ -1,4 +1,4 @@
-package net.mattemactics.testmod.core.util;
+package net.mattemactics.twitchtroll.core.util;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,7 +7,7 @@ public class TwitchViewer {
     public String USER_NAME = "";
     public Integer TROLL_COIN_COUNT = 0;
     long startTime = 0;
-    public static boolean DEBUG = true;
+    public static boolean DEBUG = false;
 
     public static long deltaTimeForIncrease = 20000;
     public static Integer increase = 15;
@@ -28,12 +28,13 @@ public class TwitchViewer {
             commandCost.put("!enderman", 0);
             commandCost.put("!blaze", 0);
             commandCost.put("!bees", 0);
+
         }else {
             commandCost.put("!creeper", 300);
             commandCost.put("!zombie", 50);
             commandCost.put("!skelly", 65);
             //commandCost.put("!tnt", 600);
-            commandCost.put("!anvil", 15);
+            commandCost.put("!anvil", 30);
             commandCost.put("!ghast", 300);
             commandCost.put("!fire", 200);
             commandCost.put("!goodboy", 100);
@@ -66,6 +67,21 @@ public class TwitchViewer {
             this.startTime = System.currentTimeMillis();
         }
     }
+
+    public void givePoints(Integer x){
+
+        this.TROLL_COIN_COUNT = this.TROLL_COIN_COUNT + x;
+    }
+
+    public void refundPoints(String command){
+        if(commandCost.containsKey(command)){
+            Integer cost = commandCost.get(command);
+            this.TROLL_COIN_COUNT = this.TROLL_COIN_COUNT + cost;
+
+        }
+    }
+
+
 
     public boolean costPoints(String command){
         if(commandCost.containsKey(command)){

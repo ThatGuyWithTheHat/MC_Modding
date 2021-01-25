@@ -1,6 +1,6 @@
-package net.mattemactics.testmod.common.items;
+package net.mattemactics.twitchtroll.common.items;
 
-import net.mattemactics.testmod.core.util.ViewerSpawnMobs;
+import net.mattemactics.twitchtroll.core.util.ViewerSpawnMobs;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.client.util.InputMappings;

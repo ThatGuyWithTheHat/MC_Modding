@@ -1,4 +1,4 @@
-package net.mattemactics.testmod.config;
+package net.mattemactics.twitchtroll.config;
 
 import net.minecraftforge.common.ForgeConfigSpec;
 
