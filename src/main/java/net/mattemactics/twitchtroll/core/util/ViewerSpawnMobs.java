@@ -6,8 +6,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.effect.LightningBoltEntity;
 import net.minecraft.entity.monster.*;
-import net.minecraft.entity.passive.BeeEntity;
-import net.minecraft.entity.passive.WolfEntity;
+import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
@@ -55,6 +54,11 @@ public class ViewerSpawnMobs extends Event {
             else if (command.equalsIgnoreCase("blaze")) doesItWork = spawnBlaze(name, event.player.world, event.player);
             else if (command.equalsIgnoreCase("bees")) doesItWork = spawnBees(name, event.player.world, event.player);
             else if (command.equalsIgnoreCase("dropitall")) dropItAll(event.player.world, event.player);
+            else if (command.equalsIgnoreCase("cow")) doesItWork = spawnCow(name, event.player.world, event.player);
+            else if (command.equalsIgnoreCase("chicken")) doesItWork = spawnChicken(name, event.player.world, event.player);
+            else if (command.equalsIgnoreCase("piggy")) doesItWork = spawnPig(name, event.player.world, event.player);
+            else if (command.equalsIgnoreCase("parrot")) doesItWork = spawnParrot(name, event.player.world, event.player);
+            else if (command.equalsIgnoreCase("baa")) doesItWork = spawnSheep(name, event.player.world, event.player);
 
             if(doesItWork) updateMSG(name, command);
             else{
@@ -113,6 +117,36 @@ public class ViewerSpawnMobs extends Event {
         zom.setCustomName(new StringTextComponent(userName));
         return addEntityToWorld(zom, worldIn, playerIn);
 
+    }
+
+    public static Boolean spawnCow(String userName, World worldIn, PlayerEntity playerIn){
+        CowEntity cow = new CowEntity(EntityType.COW, worldIn);
+        cow.setCustomName(new StringTextComponent(userName));
+        return addEntityToWorld(cow, worldIn, playerIn);
+    }
+
+    public static Boolean spawnChicken(String userName, World worldIn, PlayerEntity playerIn){
+        ChickenEntity chicken = new ChickenEntity(EntityType.CHICKEN, worldIn);
+        chicken.setCustomName(new StringTextComponent(userName));
+        return addEntityToWorld(chicken, worldIn, playerIn);
+    }
+
+    public static Boolean spawnPig(String userName, World worldIn, PlayerEntity playerIn){
+        PigEntity pig = new PigEntity(EntityType.PIG, worldIn);
+        pig.setCustomName(new StringTextComponent(userName));
+        return addEntityToWorld(pig, worldIn, playerIn);
+    }
+
+    public static Boolean spawnParrot(String userName, World worldIn, PlayerEntity playerIn){
+        PigEntity pig = new PigEntity(EntityType.PIG, worldIn);
+        pig.setCustomName(new StringTextComponent(userName));
+        return addEntityToWorld(pig, worldIn, playerIn);
+    }
+
+    public static Boolean spawnSheep(String userName, World worldIn, PlayerEntity playerIn){
+        SheepEntity sheep = new SheepEntity(EntityType.SHEEP, worldIn);
+        sheep.setCustomName(new StringTextComponent(userName));
+        return addEntityToWorld(sheep, worldIn, playerIn);
     }
 
     public static Boolean spawnEnderman(String userName, World worldIn, PlayerEntity playerIn){
