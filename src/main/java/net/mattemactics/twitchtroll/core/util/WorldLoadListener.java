@@ -16,12 +16,11 @@ public class WorldLoadListener {
     public static void onWorldLoad(PlayerEvent.PlayerLoggedInEvent event)
     {
         if(!on) {
-            //Minecraft.getInstance().player.sendChatMessage("PLayer login");
+
             TwitchTroll.LOGGER.info("!!!!!!!!!!!!Player login!!!!!!!!!!!");
             bot.setDaemon(true);
             bot.start();
             on = true;
-
         }
     }
 }

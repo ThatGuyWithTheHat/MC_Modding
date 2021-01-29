@@ -27,7 +27,7 @@ public class BotRunner extends Thread {
         bot.connect();
 
         Channel channel = bot.joinChannel("#mattemactics");
-        bot.sendMessage("I am here", channel);
+        bot.sendMessage("beep boop", channel);
         bot.start();
     }
 }

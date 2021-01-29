@@ -17,6 +17,7 @@ public class BotManager extends TwitchBot {
     ArrayList<String> commands = new ArrayList<String>();
     public static Map<String,TwitchViewer> viewers = new HashMap<>();
     static Semaphore semaphore = new Semaphore(1);
+    private static boolean RUN = true;
 
 
 
@@ -102,8 +103,13 @@ public class BotManager extends TwitchBot {
     }
 
 
+    public void go(){
+        this.RUN = true;
+    }
 
-
+    public void stop(){
+        this.RUN = false;
+    }
 
     public BotManager() {
         this.setUsername("mattemactics");

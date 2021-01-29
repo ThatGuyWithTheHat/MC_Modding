@@ -24,8 +24,8 @@ public class TwitchViewer {
             commandCost.put("!goodboy", 100);
             commandCost.put("!dropitall", 1500);
             commandCost.put("!dropit", 500);
-            commandCost.put("!boom", 500);
-            commandCost.put("!enderman", 300);
+            commandCost.put("!boom", 600);
+            commandCost.put("!enderman", 100);
             commandCost.put("!blaze", 300);
             commandCost.put("!bees", 100);
             commandCost.put("!cow", 20);
