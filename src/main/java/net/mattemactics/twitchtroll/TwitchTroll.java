@@ -1,11 +1,14 @@
 package net.mattemactics.twitchtroll;
 
 
+import net.mattemactics.twitchtroll.client.screens.ConfigScreen;
 import net.mattemactics.twitchtroll.core.init.BlockInit;
 import net.mattemactics.twitchtroll.core.init.ItemInit;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.ExtensionPoint;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -34,6 +37,11 @@ public class TwitchTroll
         //BotRunner bot = new BotRunner();
         //bot.start();
 
+        //load in config screen
+        ModLoadingContext.get().registerExtensionPoint(
+                ExtensionPoint.CONFIGGUIFACTORY,
+                () -> (mc, screen) -> new ConfigScreen()
+        );
         ItemInit.ITEMS.register(bus);
         BlockInit.BLOCKS.register(bus);
 

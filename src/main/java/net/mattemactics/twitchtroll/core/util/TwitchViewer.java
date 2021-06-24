@@ -1,5 +1,7 @@
 package net.mattemactics.twitchtroll.core.util;
 
+import net.mattemactics.twitchtroll.client.util.ModSettings;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,25 +16,47 @@ public class TwitchViewer {
     public static Map<String, Integer> commandCost = new HashMap<>();
 
     static{
-            commandCost.put("!creeper", 300);
-            commandCost.put("!zombie", 50);
-            commandCost.put("!skelly", 65);
-            //commandCost.put("!tnt", 600);
-            commandCost.put("!anvil", 30);
-            commandCost.put("!ghast", 300);
-            commandCost.put("!fire", 200);
-            commandCost.put("!goodboy", 100);
-            commandCost.put("!dropitall", 1500);
-            commandCost.put("!dropit", 500);
-            commandCost.put("!boom", 600);
-            commandCost.put("!enderman", 100);
-            commandCost.put("!blaze", 300);
-            commandCost.put("!bees", 100);
-            commandCost.put("!cow", 20);
-            commandCost.put("!chicken", 20);
-            commandCost.put("!piggy", 20);
-            commandCost.put("!parrot", 20);
-            commandCost.put("!baa", 20);
+        commandCost.put("!creeper", ModSettings.getCreeperCost());
+        commandCost.put("!zombie", ModSettings.getZombieCost());
+        commandCost.put("!skelly", ModSettings.getSkellyCost());
+        //commandCost.put("!tnt", 600);
+        commandCost.put("!anvil", ModSettings.getAnvilCost());
+        commandCost.put("!ghast", ModSettings.getGhastCost());
+        commandCost.put("!fire", ModSettings.getFireCost());
+        commandCost.put("!goodboy", ModSettings.getGoodboyCost());
+        commandCost.put("!dropitall", ModSettings.getDropitallCost());
+        commandCost.put("!dropit", ModSettings.getDropitCost());
+        commandCost.put("!boom", ModSettings.getBoomCost());
+        commandCost.put("!enderman", ModSettings.getEndermanCost());
+        commandCost.put("!blaze", ModSettings.getBlazeCost());
+        commandCost.put("!bees", ModSettings.getBeesCost());
+        commandCost.put("!cow", ModSettings.getCowCost());
+        commandCost.put("!chicken", ModSettings.getChickenCost());
+        commandCost.put("!piggy", ModSettings.getPiggyCost());
+        commandCost.put("!parrot", ModSettings.getParrotCost());
+        commandCost.put("!baa", ModSettings.getBaaCost());
+    }
+
+    public static void updateCommandCost(){
+        commandCost.put("!creeper", ModSettings.getCreeperCost());
+        commandCost.put("!zombie", ModSettings.getZombieCost());
+        commandCost.put("!skelly", ModSettings.getSkellyCost());
+        //commandCost.put("!tnt", 600);
+        commandCost.put("!anvil", ModSettings.getAnvilCost());
+        commandCost.put("!ghast", ModSettings.getGhastCost());
+        commandCost.put("!fire", ModSettings.getFireCost());
+        commandCost.put("!goodboy", ModSettings.getGoodboyCost());
+        commandCost.put("!dropitall", ModSettings.getDropitallCost());
+        commandCost.put("!dropit", ModSettings.getDropitCost());
+        commandCost.put("!boom", ModSettings.getBoomCost());
+        commandCost.put("!enderman", ModSettings.getEndermanCost());
+        commandCost.put("!blaze", ModSettings.getBlazeCost());
+        commandCost.put("!bees", ModSettings.getBeesCost());
+        commandCost.put("!cow", ModSettings.getCowCost());
+        commandCost.put("!chicken", ModSettings.getChickenCost());
+        commandCost.put("!piggy", ModSettings.getPiggyCost());
+        commandCost.put("!parrot", ModSettings.getParrotCost());
+        commandCost.put("!baa", ModSettings.getBaaCost());
     }
 
     public TwitchViewer(String userName){
@@ -40,6 +64,10 @@ public class TwitchViewer {
         this.TROLL_COIN_COUNT = 50;
         this.startTime = System.currentTimeMillis();
 
+    }
+
+    public static Map<String, Integer> getCommandCost(){
+        return commandCost;
     }
 
     public static boolean onCommandList(String command){

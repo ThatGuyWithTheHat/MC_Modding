@@ -37,6 +37,18 @@ public class BotManager extends TwitchBot {
         return out; //will return null if empty
     }
 
+    public static void addSpawn(String command){
+
+        try {
+            semaphore.acquire();
+            spawn.add(command);
+            semaphore.release();
+        }catch(Exception e){
+
+        }
+
+    }
+
 
     public void processCommand(User user, Channel channel, String message) {
         String userName = user.toString();
@@ -57,13 +69,7 @@ public class BotManager extends TwitchBot {
                 callMsg = callMsg;
                 callMsg = callMsg + message.replace("!", "");
                 this.sendMsg(callMsg, channel);
-                try {
-                    semaphore.acquire();
-                    spawn.add(spawnMsg);
-                    semaphore.release();
-                }catch(Exception e){
-
-                }
+                addSpawn(spawnMsg);
 
             } else if (message.contains("!give") && (user.isMod(channel) || userName.equalsIgnoreCase("mattemactics"))) {
 

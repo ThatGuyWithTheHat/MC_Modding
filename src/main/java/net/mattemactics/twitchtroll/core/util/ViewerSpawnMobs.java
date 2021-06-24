@@ -39,7 +39,7 @@ public class ViewerSpawnMobs extends Event {
             String name = spawn.split("!")[0];
             String command = spawn.split("!")[1];
             Boolean doesItWork = true;
-            updateMSG(name, command);
+            //updateMSG(name, command);
             if (command.equalsIgnoreCase("zombie")) doesItWork = spawnZombie(name, event.player.world, event.player);
             else if (command.equalsIgnoreCase("creeper")) doesItWork =spawnCreeper(name, event.player.world, event.player);
             else if (command.equalsIgnoreCase("skelly")) doesItWork =spawnSkeleton(name, event.player.world, event.player);
@@ -49,7 +49,7 @@ public class ViewerSpawnMobs extends Event {
             else if (command.equalsIgnoreCase("fire")) spawnFire(event.player.world, event.player);
             else if (command.equalsIgnoreCase("goodboy")) doesItWork = spawnDog(name, event.player.world, event.player);
             else if (command.equalsIgnoreCase("dropit")) dropIt(event.player.world, event.player);
-            else if (command.equalsIgnoreCase("boom")) spawnChargedCreeper(name, event.player.world, event.player);
+            else if (command.equalsIgnoreCase("boom")) doesItWork = spawnChargedCreeper(name, event.player.world, event.player);
             else if (command.equalsIgnoreCase("enderman")) doesItWork = spawnEnderman(name, event.player.world, event.player);
             else if (command.equalsIgnoreCase("blaze")) doesItWork = spawnBlaze(name, event.player.world, event.player);
             else if (command.equalsIgnoreCase("bees")) doesItWork = spawnBees(name, event.player.world, event.player);
@@ -60,10 +60,13 @@ public class ViewerSpawnMobs extends Event {
             else if (command.equalsIgnoreCase("parrot")) doesItWork = spawnParrot(name, event.player.world, event.player);
             else if (command.equalsIgnoreCase("baa")) doesItWork = spawnSheep(name, event.player.world, event.player);
 
-            if(doesItWork) updateMSG(name, command);
+            if(doesItWork){
+                updateMSG(name, command);
+            }
             else{
-                failMSG(name, command);
-                BotManager.refund(name, command);
+                //failMSG(name, command);
+                //BotManager.refund(name, command);
+                BotManager.addSpawn(spawn);
             }
 
 
@@ -138,9 +141,9 @@ public class ViewerSpawnMobs extends Event {
     }
 
     public static Boolean spawnParrot(String userName, World worldIn, PlayerEntity playerIn){
-        PigEntity pig = new PigEntity(EntityType.PIG, worldIn);
-        pig.setCustomName(new StringTextComponent(userName));
-        return addEntityToWorld(pig, worldIn, playerIn);
+        ParrotEntity parry = new ParrotEntity(EntityType.PARROT, worldIn);
+        parry.setCustomName(new StringTextComponent(userName));
+        return addEntityToWorld(parry, worldIn, playerIn);
     }
 
     public static Boolean spawnSheep(String userName, World worldIn, PlayerEntity playerIn){
