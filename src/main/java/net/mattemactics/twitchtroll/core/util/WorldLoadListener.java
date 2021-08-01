@@ -5,6 +5,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.server.FMLServerStoppingEvent;
 
 
 @Mod.EventBusSubscriber(Dist.CLIENT)
@@ -22,5 +23,12 @@ public class WorldLoadListener {
             bot.start();
             on = true;
         }
+    }
+
+    @SubscribeEvent
+    public static void onGameExit(FMLServerStoppingEvent event){
+
+        BotManager.SAVE();
+
     }
 }

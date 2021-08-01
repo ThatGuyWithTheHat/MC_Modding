@@ -2,6 +2,7 @@ package net.mattemactics.twitchtroll.client.screens;
 
 import com.mojang.blaze3d.matrix.MatrixStack;
 import net.mattemactics.twitchtroll.client.util.ModSettings;
+import net.mattemactics.twitchtroll.core.util.TwitchViewer;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.button.Button;
 import net.minecraft.client.gui.widget.list.OptionsRowList;
@@ -21,7 +22,7 @@ public final class ConfigScreen extends Screen {
     private static final int OPTIONS_LIST_ITEM_HEIGHT = 25;
 
     /** Width of a button */
-    private static final int BUTTON_WIDTH = 200;
+    private static final int BUTTON_WIDTH = 100;
     /** Height of a button */
     private static final int BUTTON_HEIGHT = 20;
     /** Distance from bottom of the screen to the "Done" button's top */
@@ -38,7 +39,10 @@ public final class ConfigScreen extends Screen {
 
     public ConfigScreen() {
         // Use the super class' constructor to set the screen's title
+
         super(new TranslationTextComponent("Twitch Troll"));
+
+
     }
 
     @Override
@@ -46,6 +50,7 @@ public final class ConfigScreen extends Screen {
         // Create the options row list
         // It must be created in this method instead of in the constructor,
         // or it will not be displayed properly
+
         this.optionsRowList = new OptionsRowList(
                 this.minecraft, this.width, this.height,
                 OPTIONS_LIST_TOP_HEIGHT,
@@ -359,6 +364,23 @@ public final class ConfigScreen extends Screen {
                                 + (int) option.get(gs)
                 )
         ));
+        this.optionsRowList.addOption(new SliderPercentageOption(
+                "Chicken Cost",
+                // Range: 0 to width of game window
+                MIN_VALUE_COST, MAX_VALUE_COST,
+                // This is an integer option, so allow whole steps only
+                10.0F,
+                // Getter and setter are similar to those in BooleanOption
+                unused -> (double) ModSettings.getChickenCost(),
+                (unused, newValue) -> ModSettings.setChickenCost(newValue.intValue()),
+                // BiFunction that returns a string in format "<name>: <value>"
+                (gs, option) -> new StringTextComponent(
+                        // Use I18n.get(String) to get a translation key's value
+                        "Chicken Cost"
+                                + ": "
+                                + (int) option.get(gs)
+                )
+        ));
 
 
         this.optionsRowList.addOption(new BooleanOption(
@@ -372,15 +394,34 @@ public final class ConfigScreen extends Screen {
         // If this is not done, users cannot click on items in the list
         this.children.add(this.optionsRowList);
 
+        this.addButton(new Button(
+                3 * (this.width - BUTTON_WIDTH) / 4,
+                this.height - DONE_BUTTON_TOP_OFFSET,
+                BUTTON_WIDTH, BUTTON_HEIGHT,
+                // Text shown on the button
+                new TranslationTextComponent("DEFAULT COSTS"),
+                // Action performed when the button is pressed
+                button -> {
+                    ModSettings.setDefault();
+                    TwitchViewer.updateCommandCost();
+                    ModSettings.SAVE();
+                    this.closeScreen();
+                }
+        ));
+
         // Add the "Done" button
         this.addButton(new Button(
-                (this.width - BUTTON_WIDTH) / 2,
+                (this.width - BUTTON_WIDTH) * 1 / 4,
                 this.height - DONE_BUTTON_TOP_OFFSET,
                 BUTTON_WIDTH, BUTTON_HEIGHT,
                 // Text shown on the button
                 new TranslationTextComponent("gui.done"),
                 // Action performed when the button is pressed
-                button -> {this.closeScreen();}
+                button -> {
+                    TwitchViewer.updateCommandCost();
+                    ModSettings.SAVE();
+                    this.closeScreen();
+                }
         ));
     }
 

@@ -2,9 +2,11 @@ package net.mattemactics.twitchtroll.client.util;
 
 import net.mattemactics.twitchtroll.core.util.TwitchViewer;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 public class ModSettings {
+    private static String FILENAME = "modSettings.csv";
     static Boolean test = false;
 
     //costsForCommand
@@ -27,14 +29,24 @@ public class ModSettings {
     static int baaCost = 20;
     static int skellyCost = 50;
 
-    public static final String AUTH = "oauth:po7g55tbm2det2nii1f29u3uzcxgmt";
+    public static String AUTH = "oauth:po7g55tbm2det2nii1f29u3uzcxgmt";
+
+    public static String getAUTH() {
+        return AUTH;
+    }
+
+    public static void setAUTH(String auth) {
+        ModSettings.AUTH = auth;
+    }
+
     public static int getSkellyCost() {
+
         return skellyCost;
     }
 
     public static void setSkellyCost(int skellyCost) {
         ModSettings.skellyCost = skellyCost;
-        TwitchViewer.updateCommandCost();
+
     }
 
     public static Boolean getTest() {
@@ -43,181 +55,214 @@ public class ModSettings {
 
     public static void setTest(Boolean test) {
         ModSettings.test = test;
-        TwitchViewer.updateCommandCost();
     }
 
     public static int getCreeperCost() {
-        return creeperCost;
+        return ModSettings.creeperCost;
     }
 
     public static void setCreeperCost(int creeperCost) {
         ModSettings.creeperCost = creeperCost;
-        TwitchViewer.updateCommandCost();
+        System.out.println("creeper set too: " + ModSettings.creeperCost);
     }
 
     public static int getZombieCost() {
-        return zombieCost;
+        return ModSettings.zombieCost;
     }
 
     public static void setZombieCost(int zombieCost) {
         ModSettings.zombieCost = zombieCost;
-        TwitchViewer.updateCommandCost();
     }
 
     public static int getAnvilCost() {
-        return anvilCost;
+        return ModSettings.anvilCost;
     }
 
     public static void setAnvilCost(int anvilCost) {
         ModSettings.anvilCost = anvilCost;
-        TwitchViewer.updateCommandCost();
     }
 
     public static int getGhastCost() {
-        return ghastCost;
+        return ModSettings.ghastCost;
     }
 
     public static void setGhastCost(int ghastCost) {
         ModSettings.ghastCost = ghastCost;
-        TwitchViewer.updateCommandCost();
     }
 
     public static int getFireCost() {
-        return fireCost;
+        return ModSettings.fireCost;
     }
 
     public static void setFireCost(int fireCost) {
         ModSettings.fireCost = fireCost;
-        TwitchViewer.updateCommandCost();
     }
 
     public static int getGoodboyCost() {
-        return goodboyCost;
+        return ModSettings.goodboyCost;
     }
 
     public static void setGoodboyCost(int goodboyCost) {
         ModSettings.goodboyCost = goodboyCost;
-        TwitchViewer.updateCommandCost();
     }
 
     public static int getDropitallCost() {
-        return dropitallCost;
+        return ModSettings.dropitallCost;
     }
 
     public static void setDropitallCost(int dropitallCost) {
         ModSettings.dropitallCost = dropitallCost;
-        TwitchViewer.updateCommandCost();
     }
 
     public static int getDropitCost() {
-        return dropitCost;
+        return ModSettings.dropitCost;
     }
 
     public static void setDropitCost(int dropitCost) {
         ModSettings.dropitCost = dropitCost;
-        TwitchViewer.updateCommandCost();
     }
 
     public static int getBoomCost() {
-        return boomCost;
+        return ModSettings.boomCost;
     }
 
     public static void setBoomCost(int boomCost) {
         ModSettings.boomCost = boomCost;
-        TwitchViewer.updateCommandCost();
     }
 
     public static int getEndermanCost() {
-        return endermanCost;
+        return ModSettings.endermanCost;
     }
 
     public static void setEndermanCost(int endermanCost) {
         ModSettings.endermanCost = endermanCost;
-        TwitchViewer.updateCommandCost();
     }
 
     public static int getBlazeCost() {
-        return blazeCost;
+        return ModSettings.blazeCost;
     }
 
     public static void setBlazeCost(int blazeCost) {
         ModSettings.blazeCost = blazeCost;
-        TwitchViewer.updateCommandCost();
     }
 
     public static int getBeesCost() {
-        return beesCost;
+        return ModSettings.beesCost;
     }
 
     public static void setBeesCost(int beesCost) {
         ModSettings.beesCost = beesCost;
-        TwitchViewer.updateCommandCost();
     }
 
     public static int getCowCost() {
-        return cowCost;
+        return ModSettings.cowCost;
     }
 
     public static void setCowCost(int cowCost) {
         ModSettings.cowCost = cowCost;
-        TwitchViewer.updateCommandCost();
     }
 
     public static int getChickenCost() {
-        return chickenCost;
+        return ModSettings.chickenCost;
     }
 
     public static void setChickenCost(int chickenCost) {
         ModSettings.chickenCost = chickenCost;
-        TwitchViewer.updateCommandCost();
     }
 
     public static int getPiggyCost() {
-        return piggyCost;
+        return ModSettings.piggyCost;
     }
 
     public static void setPiggyCost(int piggyCost) {
         ModSettings.piggyCost = piggyCost;
-        TwitchViewer.updateCommandCost();
 
     }
 
     public static int getParrotCost() {
-        return parrotCost;
+        return ModSettings.parrotCost;
     }
 
     public static void setParrotCost(int parrotCost) {
         ModSettings.parrotCost = parrotCost;
-        TwitchViewer.updateCommandCost();
     }
 
     public static int getBaaCost() {
-        return baaCost;
+        return ModSettings.baaCost;
     }
 
     public static void setBaaCost(int baaCost) {
         ModSettings.baaCost = baaCost;
-        TwitchViewer.updateCommandCost();
     }
 
     public static void SAVE(){
-        StringBuilder saveData = new StringBuilder();
-        String costHeader = "-------COSTS--------";
-        String costEnder = "-------ENDCOSTS--------";
+        ArrayList<String> saveData = new ArrayList<String>();
 
-        saveData.append(costHeader);
-        TwitchViewer.updateCommandCost();
+
         Map<String, Integer> costMap = TwitchViewer.getCommandCost();
-        saveData.append(costHeader);
-        saveData.append("\n");
+        //saveData.add("auth," + ModSettings.getAUTH() + "\n");
         for(String key: costMap.keySet()){
-            saveData.append(key);
-            saveData.append(',');
-            saveData.append(costMap.get(key));
-            saveData.append('\n');
+            StringBuilder build = new StringBuilder();
+            build.append(key);
+            build.append(',');
+            build.append(costMap.get(key));
+            saveData.add(build.toString());
         }
-        saveData.append(costEnder);
+        FileManager file = new FileManager(FILENAME);
+        file.writeFile(saveData);
 
+    }
 
+    public static void LOAD(){
+        FileManager file = new FileManager(FILENAME);
+        ArrayList<String> fileData = file.readFile();
+        if(fileData.isEmpty()) return;
+        for(String s: fileData){
+            String key = s.split(",")[0];
+            String value = s.split(",").length > 1 ? s.split(",")[1] : " ";
+            if(key.equals("!blaze")) setBlazeCost(Integer.parseInt(value));
+            else if(key.equals("!chicken")) setChickenCost(Integer.parseInt(value));
+            else if(key.equals("!zombie")) setZombieCost(Integer.parseInt(value));
+            else if(key.equals("!ghast")) setGhastCost(Integer.parseInt(value));
+            else if(key.equals("!enderman")) setEndermanCost(Integer.parseInt(value));
+            else if(key.equals("!bees")) setBeesCost(Integer.parseInt(value));
+            else if(key.equals("!dropitall")) setDropitallCost(Integer.parseInt(value));
+            else if(key.equals("!parrot")) setParrotCost(Integer.parseInt(value));
+            else if(key.equals("!anvil")) setAnvilCost(Integer.parseInt(value));
+            else if(key.equals("!baa")) setBaaCost(Integer.parseInt(value));
+            else if(key.equals("!skelly")) setSkellyCost(Integer.parseInt(value));
+            else if(key.equals("!goodboy")) setGoodboyCost(Integer.parseInt(value));
+            else if(key.equals("!boom")) setBoomCost(Integer.parseInt(value));
+            else if(key.equals("!piggy")) setPiggyCost(Integer.parseInt(value));
+            else if(key.equals("!fire")) setFireCost(Integer.parseInt(value));
+            else if(key.equals("!dropit")) setDropitCost(Integer.parseInt(value));
+            else if(key.equals("!creeper")) setCreeperCost(Integer.parseInt(value));
+            else if(key.equals("!cow")) setCowCost(Integer.parseInt(value));
+            //else if(key.equals("auth") && !value.equals(" ")) setAUTH(value);
+        }
+
+        TwitchViewer.updateCommandCost();
+
+    }
+
+    public static void setDefault(){
+        ModSettings.creeperCost = 300;
+        ModSettings.zombieCost = 50;
+        ModSettings.anvilCost = 30;
+        ModSettings.ghastCost = 300;
+        ModSettings.fireCost = 200;
+        ModSettings.goodboyCost = 100;
+        ModSettings.dropitallCost=1500;
+        ModSettings.dropitCost = 500;
+        ModSettings.boomCost = 600;
+        ModSettings.endermanCost = 100;
+        ModSettings.blazeCost = 300;
+        ModSettings.beesCost = 100;
+        ModSettings.cowCost = 20;
+        ModSettings.chickenCost = 20;
+        ModSettings.piggyCost = 20;
+        ModSettings.parrotCost = 20;
+        ModSettings.baaCost = 20;
+        ModSettings.skellyCost = 50;
     }
 }

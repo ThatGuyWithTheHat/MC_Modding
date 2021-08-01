@@ -1,7 +1,9 @@
 package net.mattemactics.twitchtroll;
 
 
+import net.mattemactics.twitchtroll.client.render.RenderGuiHandler;
 import net.mattemactics.twitchtroll.client.screens.ConfigScreen;
+import net.mattemactics.twitchtroll.client.util.ModSettings;
 import net.mattemactics.twitchtroll.core.init.BlockInit;
 import net.mattemactics.twitchtroll.core.init.ItemInit;
 import net.minecraftforge.api.distmarker.Dist;
@@ -28,12 +30,13 @@ public class TwitchTroll
     public TwitchTroll() {
         //Registration.register();
         // Register the setup method for modloading
-
+        ModSettings.LOAD();
 
 
 
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+        MinecraftForge.EVENT_BUS.register(new RenderGuiHandler());
         //BotRunner bot = new BotRunner();
         //bot.start();
 

@@ -27,6 +27,7 @@ import java.util.ArrayList;
 public class ViewerSpawnMobs extends Event {
 
     static Integer spawnRandomize = 5;
+    static ArrayList<Entity> currentEntities = new ArrayList<>();
 
 
     @SubscribeEvent
@@ -69,6 +70,19 @@ public class ViewerSpawnMobs extends Event {
                 BotManager.addSpawn(spawn);
             }
 
+            for(int i = 0; i < currentEntities.size(); i++){
+                if(!currentEntities.get(i).isAlive()) {
+                    currentEntities.remove(i);
+                    continue;
+                }
+                PlayerEntity player = event.player;
+
+                if(currentEntities.get(i).getDistance(player) > 20){
+                    currentEntities.get(i).remove();
+                    currentEntities.remove(i);
+                }
+            }
+
 
 
 
@@ -91,9 +105,12 @@ public class ViewerSpawnMobs extends Event {
 
         int xOffset = ModUtils.randBetweenTwoValues(-1 * spawnRandomize,spawnRandomize);
         int zOffset = ModUtils.randBetweenTwoValues(-1 * spawnRandomize,spawnRandomize);
+        int counter = 0;
         while(!worldIn.isAirBlock(playerIn.getPosition().east(xOffset).north(zOffset))) {
             xOffset = ModUtils.randBetweenTwoValues(-1 * spawnRandomize, spawnRandomize);
             zOffset = ModUtils.randBetweenTwoValues(-1 * spawnRandomize, spawnRandomize);
+            counter ++;
+            if (counter > 5) break;
         }
 
 
@@ -105,10 +122,14 @@ public class ViewerSpawnMobs extends Event {
 
 
     public static Boolean addEntityToWorld(Entity inEntity, World worldIn, PlayerEntity playerIn){
+
         BlockPos pos = spawnLocation(playerIn, worldIn);
         inEntity.setPosition(pos.getX(), pos.getY(), pos.getZ());
         worldIn.addEntity(inEntity);
-
+        Boolean entityAdded = inEntity.isAddedToWorld();
+        if(entityAdded){
+            currentEntities.add(inEntity);
+        }
         return inEntity.isAddedToWorld();
 
     }

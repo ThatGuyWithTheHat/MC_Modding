@@ -47,7 +47,7 @@ public class TwitchViewer {
         commandCost.put("!fire", ModSettings.getFireCost());
         commandCost.put("!goodboy", ModSettings.getGoodboyCost());
         commandCost.put("!dropitall", ModSettings.getDropitallCost());
-        commandCost.put("!dropit", ModSettings.getDropitCost());
+        //commandCost.put("!dropit", ModSettings.getDropitCost());
         commandCost.put("!boom", ModSettings.getBoomCost());
         commandCost.put("!enderman", ModSettings.getEndermanCost());
         commandCost.put("!blaze", ModSettings.getBlazeCost());
@@ -62,6 +62,13 @@ public class TwitchViewer {
     public TwitchViewer(String userName){
         this.USER_NAME = userName;
         this.TROLL_COIN_COUNT = 50;
+        this.startTime = System.currentTimeMillis();
+
+    }
+
+    public TwitchViewer(String userName, int coins){
+        this.USER_NAME = userName;
+        this.TROLL_COIN_COUNT = coins;
         this.startTime = System.currentTimeMillis();
 
     }
